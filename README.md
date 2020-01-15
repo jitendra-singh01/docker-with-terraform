@@ -17,3 +17,24 @@ So all above things, we need to call commands every time. To provision the docke
 5. Docker Volume
 6. Docker container with nginx server
 7. Docker network etc...  
+
+
+### Simple example Terraform and Docker
+
+`# Configure the Docker provider
+provider "docker" {
+  }
+# Create a Apache Container
+resource "docker_container" "nginx" {
+    image = "nginx"
+    name = "enginecks-teste"
+    ports {
+        internal = "80"
+        external = "80"
+    }
+}
+# Create a image
+resource "docker_image" "nginx" {
+    name = "nginx:latest"
+}
+`
